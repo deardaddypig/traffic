@@ -11,12 +11,12 @@
 
 
 <script>
-  // 禁用滑鼠右鍵
+  // 禁右鍵
   document.addEventListener('contextmenu', function(e) {
     e.preventDefault();
   });
 
-  // 禁用快捷鍵 (F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U, Ctrl+S)
+  // 禁快捷鍵
   document.addEventListener('keydown', function(e) {
     if (
       e.key === 'F12' || 
@@ -32,7 +32,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>嘉諾撒聖家學校 上學大作戰</title>
+    <title>聖家學校 過馬路 要小心</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Noto+Sans+TC:wght@700;900&display=swap');
@@ -81,7 +81,7 @@
     <!-- Title & Score Board Container -->
     <div class="w-full max-w-lg mb-2 flex flex-col items-center">
         <h1 class="text-xl md:text-2xl font-black text-center text-pink-300 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] tracking-wide mb-1 flex items-center gap-2">
-            <span>🏫</span> 嘉諾撒聖家學校 小心過馬路
+            <span>🏫</span>聖家學校 過馬路 要小心
         </h1>
         
         <!-- Game HUD -->
@@ -111,13 +111,13 @@
             <!-- Character Selection Screen -->
             <div id="char-select-screen" class="flex flex-col items-center w-full">
                 <h2 class="text-xl md:text-2xl font-black text-yellow-300 mb-1">請選擇你的角色 🎒</h2>
-                <p class="text-xs text-gray-300 mb-4">準備穿越聯合道回到嘉諾撒聖家學校！</p>
+                <p class="text-xs text-gray-300 mb-4">準備穿越聯合道回到聖家學校！</p>
                 
                 <div class="grid grid-cols-3 gap-3 w-full mb-5">
                     <div onclick="selectCharacter('GIRL')" id="char-GIRL" class="char-card selected bg-slate-800 p-3 rounded-lg cursor-pointer flex flex-col items-center">
                         <div class="text-3xl mb-1">👧</div>
                         <div class="text-xs font-bold text-pink-300">學生</div>
-                        <div class="text-[10px] text-gray-400 mt-1">五年級</div>
+                        <div class="text-[10px] text-gray-400 mt-1">去返學</div>
                     </div>
                     <div onclick="selectCharacter('BOY')" id="char-BOY" class="char-card bg-slate-800 p-3 rounded-lg cursor-pointer flex flex-col items-center">
                         <div class="text-3xl mb-1">👦</div>
@@ -144,7 +144,7 @@
                 <div class="bg-red-950/90 border-2 border-red-500 rounded-lg p-3 mb-3 text-red-200 text-xs md:text-sm font-bold max-w-xs shadow-inner">
                     「點解唔行斑馬線？爬圍欄好危險！扣 100 分！」
                 </div>
-                <p class="text-yellow-300 text-xs mb-4">校長在大閘內看著你！記得行正門！</p>
+                <p class="text-yellow-300 text-xs mb-4">校長在大閘內看著你！記得行斑馬線！</p>
                 <button onclick="nextLevelAfterScold()" class="pixel-btn bg-yellow-500 hover:bg-yellow-600 text-slate-900 font-bold py-2.5 px-6 rounded-lg text-sm border-2 border-yellow-300 shadow-xl">
                     已經記住，繼續下一關 ➡️
                 </button>
@@ -166,23 +166,23 @@
     <!-- On-screen Controls for Mobile Devices -->
     <div class="w-full max-w-lg mt-2 grid grid-cols-3 gap-2 px-8 sm:px-12 md:hidden">
         <div></div>
-        <button ontouchstart="handleTouch('UP')" onclick="handleTouch('UP')" class="pixel-btn bg-slate-800 hover:bg-slate-700 active:bg-pink-500 text-xl font-bold py-2.5 rounded-lg border border-slate-600 flex justify-center items-center shadow-md">
+        <button ontouchstart="handleTouch('UP'); event.preventDefault();" class="pixel-btn bg-slate-800 hover:bg-slate-700 active:bg-pink-500 text-xl font-bold py-2.5 rounded-lg border border-slate-600 flex justify-center items-center shadow-md">
             ⬆️
         </button>
         <div></div>
-        <button ontouchstart="handleTouch('LEFT')" onclick="handleTouch('LEFT')" class="pixel-btn bg-slate-800 hover:bg-slate-700 active:bg-pink-500 text-xl font-bold py-2.5 rounded-lg border border-slate-600 flex justify-center items-center shadow-md">
+        <button ontouchstart="handleTouch('LEFT'); event.preventDefault();" class="pixel-btn bg-slate-800 hover:bg-slate-700 active:bg-pink-500 text-xl font-bold py-2.5 rounded-lg border border-slate-600 flex justify-center items-center shadow-md">
             ⬅️
         </button>
-        <button ontouchstart="handleTouch('DOWN')" onclick="handleTouch('DOWN')" class="pixel-btn bg-slate-800 hover:bg-slate-700 active:bg-pink-500 text-xl font-bold py-2.5 rounded-lg border border-slate-600 flex justify-center items-center shadow-md">
+        <button ontouchstart="handleTouch('DOWN'); event.preventDefault();" class="pixel-btn bg-slate-800 hover:bg-slate-700 active:bg-pink-500 text-xl font-bold py-2.5 rounded-lg border border-slate-600 flex justify-center items-center shadow-md">
             ⬇️
         </button>
-        <button ontouchstart="handleTouch('RIGHT')" onclick="handleTouch('RIGHT')" class="pixel-btn bg-slate-800 hover:bg-slate-700 active:bg-pink-500 text-xl font-bold py-2.5 rounded-lg border border-slate-600 flex justify-center items-center shadow-md">
+        <button ontouchstart="handleTouch('RIGHT'); event.preventDefault();" class="pixel-btn bg-slate-800 hover:bg-slate-700 active:bg-pink-500 text-xl font-bold py-2.5 rounded-lg border border-slate-600 flex justify-center items-center shadow-md">
             ➡️
         </button>
     </div>
 
     <div class="mt-2 text-[11px] text-gray-400 text-center">
-        電腦操作：使用方向鍵 <kbd class="px-1 bg-slate-800 rounded border border-slate-600">⬆️</kbd> <kbd class="px-1 bg-slate-800 rounded border border-slate-600">⬇️</kbd> <kbd class="px-1 bg-slate-800 rounded border border-slate-600">⬅️</kbd> <kbd class="px-1 bg-slate-800 rounded border border-slate-600">➡️</kbd> 或 <kbd class="px-1 bg-slate-800 rounded border border-slate-600">WASD</kbd>
+        操作：使用方向鍵 <kbd class="px-1 bg-slate-800 rounded border border-slate-600">⬆️</kbd> <kbd class="px-1 bg-slate-800 rounded border border-slate-600">⬇️</kbd> <kbd class="px-1 bg-slate-800 rounded border border-slate-600">⬅️</kbd> <kbd class="px-1 bg-slate-800 rounded border border-slate-600">➡️</kbd> 或 <kbd class="px-1 bg-slate-800 rounded border border-slate-600">WASD</kbd>
     </div>
 
     <script>
@@ -332,14 +332,16 @@
 
         let vehicles = [];
         const laneConfigs = [
-            { y: 2, type: 'TAXI', speed: 1.74, dir: 1 },
-            { y: 3, type: 'MINIBUS', speed: -2.13, dir: -1 },
-            { y: 4, type: 'BUS', speed: 1.16, dir: 1 },
-            { y: 6, type: 'CAR_RED', speed: -2.42, dir: -1 },
-            { y: 7, type: 'TAXI', speed: 1.94, dir: 1 },
-            { y: 8, type: 'MINIBUS', speed: -1.84, dir: -1 },
-            { y: 9, type: 'CAR_BLUE', speed: 2.32, dir: 1 }
+            { y: 2, speed: 1.74, dir: 1 },  // 第一行車路 (y: 2) -> 對應正門右方的巴士站
+            { y: 3, speed: -2.13, dir: -1 },
+            { y: 4, speed: 1.16, dir: 1 },
+            { y: 6, speed: -2.42, dir: -1 },
+            { y: 7, speed: 1.94, dir: 1 },
+            { y: 8, speed: -1.84, dir: -1 },
+            { y: 9, speed: 2.32, dir: 1 }
         ];
+
+        const availableVehicleTypes = ['TAXI', 'MINIBUS', 'BUS', 'CAR_RED', 'CAR_BLUE'];
 
         function initWeather() {
             const types = ['SUNNY', 'RAINY', 'SUNSET'];
@@ -485,6 +487,24 @@
             ctx.fillStyle = '#78909C';
             ctx.fillRect(0, 68, 150, 4);
             ctx.fillRect(250, 68, 150, 4);
+
+            // --- 巴士站 (Bus Stop on the right of the main entrance - 上方紅色區域) ---
+            const busStopX = 260;
+            const busStopY = 74;
+            // Bus stop shelter / platform
+            ctx.fillStyle = '#455A64';
+            ctx.fillRect(busStopX, busStopY, 70, 12);
+            ctx.fillStyle = '#B0BEC5';
+            ctx.fillRect(busStopX + 2, busStopY + 2, 66, 8);
+            // Bus Stop Sign Pole
+            ctx.fillStyle = '#37474F';
+            ctx.fillRect(busStopX + 60, busStopY + 12, 3, 14);
+            ctx.fillStyle = '#0288D1';
+            ctx.fillRect(busStopX + 54, busStopY + 4, 15, 10);
+            ctx.fillStyle = '#FFFFFF';
+            ctx.font = 'bold 6px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('巴士站', busStopX + 61, busStopY + 11);
 
             // Junction Road Signboard (聯合道)
             drawRoadSign(10, 42);
@@ -667,9 +687,9 @@
 
             // Character Color Configurations
             let hairColor = '#212121';
-            let shirtColor = '#E0F7FA'; // Default Girl Blue Dress
+            let shirtColor = '#fae0ec'; // Default Girl Dress
             let tieColor = '#0288D1';
-            let pantsColor = '#0288D1';
+            let pantsColor = '#fae0ec';
 
             if (selectedCharacter === 'BOY') {
                 shirtColor = '#FFFFFF';
@@ -730,9 +750,8 @@
 
         function initVehicles() {
             vehicles = [];
-            laneConfigs.forEach(config => {
+            laneConfigs.forEach((config, laneIndex) => {
                 const count = Math.floor(Math.random() * 2) + 2;
-                const baseWidth = config.type === 'BUS' ? 76 : (config.type === 'MINIBUS' ? 58 : 46);
                 
                 // Speed calculation: Levels 1-4 are slowed down by 30% (0.7x base)
                 let speedMultiplier;
@@ -743,12 +762,24 @@
                 }
 
                 for (let i = 0; i < count; i++) {
+                    let vType = availableVehicleTypes[Math.floor(Math.random() * availableVehicleTypes.length)];
+                    
+                    // 確保第一行（laneIndex === 0，即畫面正門右上方巴士站旁的那條車道）必定有巴士出現以便停靠巴士站
+                    if (laneIndex === 0 && i === 0) {
+                        vType = 'BUS';
+                    }
+
+                    const baseWidth = vType === 'BUS' ? 76 : (vType === 'MINIBUS' ? 58 : 46);
+
                     vehicles.push({
                         x: i * (400 / count) + Math.random() * 40,
                         y: config.y,
                         width: baseWidth,
                         speed: config.speed * speedMultiplier,
-                        type: config.type
+                        type: vType,
+                        isBusStopLane: laneIndex === 0, // 標記為巴士站所在的車道
+                        stopTimer: 0,
+                        hasStoppedAtBusStop: false
                     });
                 }
             });
@@ -756,9 +787,25 @@
 
         function updateVehicles() {
             vehicles.forEach(v => {
+                // 如果是巴士站所在車道的巴士，檢查是否到達巴士站位置 (X 座標約在 260 左右)
+                if (v.isBusStopLane && v.type === 'BUS') {
+                    if (v.stopTimer > 0) {
+                        v.stopTimer--; // 倒數 4 秒 (大約 240 個 frame，假設 60fps)
+                        return; // 暫停移動
+                    } else if (!v.hasStoppedAtBusStop && v.x >= 240 && v.x <= 280) {
+                        v.stopTimer = 240; // 停站 4 秒 (4秒 * 60 = 240 frames)
+                        v.hasStoppedAtBusStop = true;
+                        return;
+                    }
+                }
+
                 v.x += v.speed;
+
                 if (v.speed > 0 && v.x > 400) {
                     v.x = -v.width - Math.random() * 50;
+                    if (v.isBusStopLane) {
+                        v.hasStoppedAtBusStop = false; // 重置停站狀態以便下一輪循環再停
+                    }
                     if (Math.random() < 0.08) sound.playHonk();
                 } else if (v.speed < 0 && v.x < -v.width) {
                     v.x = 400 + Math.random() * 50;
@@ -975,7 +1022,7 @@
             
             document.getElementById('overlay-icon').innerText = '🏫';
             document.getElementById('overlay-title').innerText = '完美到達學校！🎉';
-            document.getElementById('overlay-desc').innerText = `好棒！行正門大閘順利通關！準備進入第 ${level} 關！`;
+            document.getElementById('overlay-desc').innerText = `勁呀你！行正門大閘順利通關！準備進入第 ${level} 關！`;
             document.getElementById('overlay-btn').innerText = '下一關 ➡️';
             document.getElementById('overlay-btn').onclick = startGame;
 
